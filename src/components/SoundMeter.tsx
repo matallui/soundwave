@@ -2,8 +2,6 @@ import { cn } from "@/utils/cn";
 import React, { useEffect, useRef, useState } from "react";
 import { Countdown } from "@/components/Countdown";
 
-let maxDb = 0;
-
 const byteArrayToDB = (byteArray: Uint8Array) => {
   const sum = byteArray.reduce((acc, val) => acc + val * val, 0);
   const rms = Math.sqrt(sum / byteArray.length);
@@ -22,7 +20,10 @@ export const SoundMeter: React.FC<SoundMeterProps> = ({
   onDone,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const maxDb = useRef(0);
   const [done, setDone] = useState(false);
+
+  console.log("SoundMeter:", maxDb, "dB");
 
   useEffect(() => {
     let audioCtx: AudioContext;
@@ -88,11 +89,11 @@ export const SoundMeter: React.FC<SoundMeterProps> = ({
             //   WIDTH - WIDTH / 3,
             //   HEIGHT / 4,
             // );
-            maxDb = Math.max(maxDb, db);
+            maxDb.current = Math.max(maxDb.current, db);
           }
           if (done) {
-            console.log("Done with:", maxDb);
-            onDone?.(maxDb);
+            console.log("Done with:", maxDb.current);
+            onDone?.(maxDb.current);
             stream.getTracks().forEach((track) => track.stop());
           } else {
             renderFrame();

@@ -47,6 +47,7 @@ export const scoreRouter = createTRPCRouter({
             },
           });
         }
+        return existingScore;
       }
 
       return ctx.prisma.score.create({

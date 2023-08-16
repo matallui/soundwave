@@ -220,7 +220,7 @@ const GameRun: React.FC<GameRunProps> = ({ user }) => {
   }, [requestPermissions]);
 
   const handleDone = useCallback((db: number) => {
-    setScore((curr) => Math.max(curr, db));
+    setScore(db);
     setState("done");
   }, []);
 
@@ -287,7 +287,6 @@ const GameScore: React.FC<GameScoreProps> = ({ user, score, onRetry }) => {
         GREAT JOB!
       </h3>
       <GameScoreItem
-        rank={1}
         school={user.school}
         teacher={user.teacher}
         grade={user.grade}
@@ -306,7 +305,7 @@ const GameScore: React.FC<GameScoreProps> = ({ user, score, onRetry }) => {
 };
 
 export interface GameScoreItemProps {
-  rank: number;
+  rank?: number;
   school: string;
   teacher: string;
   grade: string;
@@ -322,7 +321,7 @@ export const GameScoreItem: React.FC<GameScoreItemProps> = ({
 }) => {
   return (
     <Card className="grid grid-cols-[40px,3fr,3fr,1fr,90px] items-center gap-2 bg-[#e8e8e8] p-2">
-      <div className="text-xl font-bold">#{rank}</div>
+      <div className="text-xl font-bold">#{rank ?? "#"}</div>
       <div className="text-center">{school}</div>
       <div className="text-center">{teacher}</div>
       <div className="text-center">{grade} Grade</div>
