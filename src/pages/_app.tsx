@@ -3,6 +3,7 @@ import { fontMono, fontSans } from "@/utils/fonts";
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 import "@/styles/globals.css";
+import { TailwindIndicator } from "@/components/TailwindIndicator";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -14,8 +15,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       )}
     >
       <div className="min-w-screen relative flex min-h-screen w-screen flex-col">
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </div>
+      <TailwindIndicator />
     </div>
   );
 };
