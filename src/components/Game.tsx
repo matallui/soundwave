@@ -55,7 +55,7 @@ export const Game = () => {
           </>
         )}
       </div>
-      <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="mt-6 flex flex-col items-center justify-center">
         {user ? (
           <GameRun user={user} />
         ) : (
@@ -100,7 +100,7 @@ const GameForm: React.FC<GameFormProps> = ({ onSubmit }) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col items-center gap-6"
       >
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <FormField
             control={form.control}
             name="school"
@@ -226,10 +226,17 @@ const GameRun: React.FC<GameRunProps> = ({ user }) => {
 
   return (
     <Card className="flex h-[95%] w-[90%] flex-col items-center justify-center rounded-xl drop-shadow-lg">
-      {state === "permissions" && <p>Waiting for permissions...</p>}
+      {state === "permissions" && (
+        <div className="m-16 text-center">
+          <p>
+            Click <span className="font-bold">allow</span> in your browser so we
+            can hear how loud you are!
+          </p>
+        </div>
+      )}
       {state === "ready" && (
         <Countdown
-          className="text-center font-mono text-8xl text-background"
+          className="text-center font-mono text-8xl text-background py-32"
           value={3}
           onDone={() => setState("running")}
           zeroMessage="GO!"
@@ -282,7 +289,7 @@ const GameScore: React.FC<GameScoreProps> = ({ user, score, onRetry }) => {
   }, [school, teacher, grade, score]);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-evenly gap-6 p-10 text-center">
+    <div className="flex h-full w-full flex-col items-center justify-evenly gap-6 px-10 py-16 text-center">
       <h3 className="font-mono text-5xl font-thin uppercase text-background">
         GREAT JOB!
       </h3>

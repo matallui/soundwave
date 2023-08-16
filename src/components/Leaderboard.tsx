@@ -88,7 +88,7 @@ export const Leaderboard = () => {
         Are you <span className="font-bold uppercase">loud enough</span> to get
         in the top ten high scores?
       </p>
-      <Card className="mx-4 mb-2 mt-4 flex-1 rounded-xl p-1 drop-shadow-lg">
+      <Card className="mx-4 mb-2 mt-4 rounded-xl p-1 drop-shadow-lg">
         <CardHeader>
           <CardTitle className="mb-3 text-center font-mono text-5xl font-thin uppercase text-background">
             HIGH SCORES
