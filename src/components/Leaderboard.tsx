@@ -1,81 +1,86 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { GameScoreItem } from "./Game";
+import { api } from "@/utils/api";
 
-const leaders = [
-  {
-    rank: 1,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 2,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 3,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 4,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 5,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 6,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 7,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 8,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 9,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-  {
-    rank: 10,
-    school: "School Name Goes Here",
-    teacher: "Teacher Name Here",
-    grade: "1st",
-    score: 12.5,
-  },
-];
+// const LEADERS = [
+//   {
+//     rank: 1,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 2,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 3,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 4,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 5,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 6,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 7,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 8,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 9,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+//   {
+//     rank: 10,
+//     school: "School Name Goes Here",
+//     teacher: "Teacher Name Here",
+//     grade: "1st",
+//     score: 12.5,
+//   },
+// ];
 
 export const Leaderboard = () => {
+  const { data: scores, isLoading } = api.score.getHighScores.useQuery({
+    limit: 10,
+  });
+
   return (
     <div className="flex flex-1 flex-col">
       <h3 className="mb-2 mt-2 text-xl font-bold uppercase">Leaderboard</h3>
@@ -95,8 +100,16 @@ export const Leaderboard = () => {
         </CardHeader>
         <CardContent className="max-h-fit overflow-y-scroll">
           <div className="flex flex-col gap-3">
-            {leaders.map((leader) => (
-              <GameScoreItem key={leader.rank} {...leader} />
+            {isLoading || (!scores && <div>Loading...</div>)}
+            {scores?.map((score, i) => (
+              <GameScoreItem
+                key={score.id}
+                rank={i + 1}
+                school={score.school}
+                teacher={score.teacher}
+                grade={score.grade}
+                score={score.score}
+              />
             ))}
           </div>
         </CardContent>

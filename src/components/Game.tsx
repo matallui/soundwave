@@ -22,6 +22,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { SoundMeter } from "@/components/SoundMeter";
 import { Countdown } from "@/components/Countdown";
+import { api } from "@/utils/api";
 
 type User = {
   school: string;
@@ -95,7 +96,8 @@ const GameForm: React.FC<GameFormProps> = ({ onSubmit }) => {
   return (
     <Form {...form}>
       <form
-        onSubmit={() => form.handleSubmit(onSubmit)}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col items-center gap-6"
       >
         <div className="flex gap-4">
@@ -258,6 +260,27 @@ interface GameScoreProps {
 }
 
 const GameScore: React.FC<GameScoreProps> = ({ user, score, onRetry }) => {
+  const { school, teacher, grade } = user;
+  const submitScore = api.score.addScore.useMutation();
+  const utils = api.useContext();
+
+  useEffect(() => {
+    submitScore.mutate(
+      {
+        school,
+        teacher,
+        grade,
+        score,
+      },
+      {
+        onSuccess: () => {
+          void utils.score.getHighScores.invalidate();
+        },
+      }
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [school, teacher, grade, score]);
+
   return (
     <div className="flex h-full w-full flex-col items-center justify-evenly gap-6 p-10 text-center">
       <h3 className="font-mono text-5xl font-thin uppercase text-background">
