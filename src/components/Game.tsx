@@ -38,7 +38,9 @@ export const Game = () => {
   return (
     <>
       <div className="lg:max-w-[90%]">
-        <h3 className="mt-6 text-xl font-bold uppercase">{title}</h3>
+        <h3 className="mt-6 text-base font-bold uppercase md:text-lg lg:text-xl">
+          {title}
+        </h3>
         {!user && (
           <>
             <p className="mt-2 text-justify">
@@ -236,7 +238,7 @@ const GameRun: React.FC<GameRunProps> = ({ user }) => {
       )}
       {state === "ready" && (
         <Countdown
-          className="text-center font-mono text-8xl text-background py-32"
+          className="py-32 text-center font-mono text-8xl text-background"
           value={3}
           onDone={() => setState("running")}
           zeroMessage="GO!"
@@ -327,12 +329,16 @@ export const GameScoreItem: React.FC<GameScoreItemProps> = ({
   score,
 }) => {
   return (
-    <Card className="grid grid-cols-[40px,3fr,3fr,1fr,90px] items-center gap-2 bg-[#e8e8e8] p-2">
-      <div className="text-xl font-bold">#{rank ?? "#"}</div>
-      <div className="text-center">{school}</div>
-      <div className="text-center">{teacher}</div>
-      <div className="text-center">{grade} Grade</div>
-      <div className="text-end text-lg font-bold">{score.toFixed(1)} dB</div>
+    <Card className="grid grid-cols-[1fr,8fr,6fr,4fr,4fr] items-center gap-[2px] bg-[#e8e8e8] p-[2px] sm:gap-2 sm:p-1 md:p-2">
+      <div className="text-sm font-bold sm:text-base md:text-lg lg:text-lg">
+        #{rank ?? "#"}
+      </div>
+      <div className="text-center text-xs sm:text-base">{school}</div>
+      <div className="text-center text-xs sm:text-base">{teacher}</div>
+      <div className="text-center text-xs sm:text-base">{grade} Grade</div>
+      <div className="text-center text-sm font-bold md:text-base lg:text-lg">
+        {score.toFixed(1)} dB
+      </div>
     </Card>
   );
 };

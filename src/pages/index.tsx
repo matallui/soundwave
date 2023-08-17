@@ -18,13 +18,13 @@ export default function Home() {
             <div className="h-[150px] w-[300px]">
               <Image src="/logo.png" alt="logo" width={300} height={150} />
             </div>
-            <h1 className="rounded-xl bg-white p-2 text-center font-mono text-5xl text-background">
+            <h1 className="rounded-xl bg-white p-2 text-center font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-background">
               SOUND WAVE SCIENCE!
             </h1>
           </div>
           {/* Description */}
           <div className="lg:max-w-[90%]">
-            <h3 className="mb-2 mt-4 text-xl font-bold uppercase">
+            <h3 className="mb-2 mt-4 text-base md:text-lg lg:text-xl font-bold uppercase">
               Let&apos;s get loud!
             </h3>
             <p className="text-justify">

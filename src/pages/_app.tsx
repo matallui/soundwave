@@ -14,7 +14,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         fontMono.variable
       )}
     >
-      <div className="min-w-screen relative flex min-h-screen w-screen flex-col">
+      <div className="min-w-screen relative flex min-h-screen w-screen flex-col text-sm sm:text-base">
         <Component {...pageProps} />
       </div>
       <TailwindIndicator />
