@@ -51,7 +51,7 @@ export const Game = () => {
               noise you can.
             </p>
             <p className="mt-4 text-justify">
-              Can you <span className="font-bold uppercase">get lound</span>{" "}
+              Can you <span className="font-bold uppercase">get loud</span>{" "}
               enough to make it onto the leaderboard?
             </p>
           </>
