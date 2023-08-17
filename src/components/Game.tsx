@@ -38,7 +38,7 @@ export const Game = () => {
   return (
     <>
       <div className="lg:max-w-[90%]">
-        <h3 className="mt-6 text-base font-bold uppercase md:text-lg lg:text-xl">
+        <h3 className="mt-3 text-base font-bold uppercase sm:mt-4 md:mt-5 md:text-lg lg:mt-6 lg:text-xl">
           {title}
         </h3>
         {!user && (
@@ -57,7 +57,7 @@ export const Game = () => {
           </>
         )}
       </div>
-      <div className="mt-6 flex flex-col items-center justify-center">
+      <div className="mt-2 flex flex-col items-center justify-center sm:mt-4 md:mt-5 lg:mt-6">
         {user ? (
           <GameRun user={user} />
         ) : (
@@ -227,7 +227,7 @@ const GameRun: React.FC<GameRunProps> = ({ user }) => {
   }, []);
 
   return (
-    <Card className="flex h-[95%] w-[90%] flex-col items-center justify-center rounded-xl drop-shadow-lg">
+    <Card className="flex h-[95%] w-full flex-col items-center justify-center rounded-xl drop-shadow-lg sm:w-[90%]">
       {state === "permissions" && (
         <div className="m-16 text-center">
           <p>
@@ -238,7 +238,7 @@ const GameRun: React.FC<GameRunProps> = ({ user }) => {
       )}
       {state === "ready" && (
         <Countdown
-          className="py-32 text-center font-mono text-8xl text-background"
+          className="py-16 text-center font-mono text-4xl text-background sm:py-20 sm:text-6xl md:py-28 md:text-7xl lg:py-32 lg:text-8xl"
           value={3}
           onDone={() => setState("running")}
           zeroMessage="GO!"
@@ -291,8 +291,8 @@ const GameScore: React.FC<GameScoreProps> = ({ user, score, onRetry }) => {
   }, [school, teacher, grade, score]);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-evenly gap-6 px-10 py-16 text-center">
-      <h3 className="font-mono text-5xl font-thin uppercase text-background">
+    <div className="flex h-full w-full flex-col items-center justify-evenly gap-3 px-4 py-8 text-center sm:gap-4 sm:px-6 sm:py-10 md:gap-5 md:px-8 md:py-14 lg:gap-6 lg:px-10 lg:py-16">
+      <h3 className="font-mono text-2xl font-thin uppercase text-background sm:text-3xl md:text-4xl lg:text-5xl">
         GREAT JOB!
       </h3>
       <GameScoreItem
@@ -302,7 +302,7 @@ const GameScore: React.FC<GameScoreProps> = ({ user, score, onRetry }) => {
         score={score}
       />
       <Button
-        className="text-xl font-bold uppercase drop-shadow-lg"
+        className="text-base sm:text-lg md:text-xl font-bold uppercase drop-shadow-lg"
         onClick={() => {
           onRetry();
         }}
