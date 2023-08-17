@@ -329,14 +329,14 @@ export const GameScoreItem: React.FC<GameScoreItemProps> = ({
   score,
 }) => {
   return (
-    <Card className="grid grid-cols-[1fr,8fr,6fr,4fr,4fr] items-center gap-[2px] bg-[#e8e8e8] p-[2px] sm:gap-2 sm:p-1 md:p-2">
-      <div className="text-sm font-bold sm:text-base md:text-lg lg:text-lg">
+    <Card className="grid grid-cols-[1fr,8fr,6fr,4fr,4fr] items-center gap-[2px] bg-[#e8e8e8] p-1 sm:gap-2 md:p-2">
+      <div className="text-xs font-bold sm:text-sm md:text-base lg:text-lg">
         #{rank ?? "#"}
       </div>
       <div className="text-center text-xs sm:text-base">{school}</div>
       <div className="text-center text-xs sm:text-base">{teacher}</div>
       <div className="text-center text-xs sm:text-base">{grade} Grade</div>
-      <div className="text-center text-sm font-bold md:text-base lg:text-lg">
+      <div className="text-center text-xs font-bold sm:text-sm md:text-base lg:text-lg">
         {score.toFixed(1)} dB
       </div>
     </Card>

@@ -88,17 +88,17 @@ export const Leaderboard = () => {
         Are you <span className="font-bold uppercase">loud enough</span> to get
         in the top ten high scores?
       </p>
-      <Card className="mx-4 mt-4 rounded-xl p-1 drop-shadow-lg">
-        <CardHeader>
-          <CardTitle className="mb-3 text-center font-mono text-5xl font-thin uppercase text-background">
+      <Card className="mt-4 rounded-xl drop-shadow-lg sm:mx-2 sm:p-1 md:mx-4">
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="mb-3 text-center font-mono text-2xl font-thin uppercase text-background sm:text-3xl md:text-4xl lg:text-5xl">
             HIGH SCORES
           </CardTitle>
           <Separator
             orientation="horizontal"
-            className="h-[3px] bg-background"
+            className="h-[1px] bg-background sm:h-[2px] md:h-[3px]"
           />
         </CardHeader>
-        <CardContent className="max-h-fit overflow-y-scroll">
+        <CardContent className="max-h-fit overflow-y-scroll p-4 pt-0 sm:p-6">
           <div className="flex flex-col gap-3">
             {isLoading || (!scores && <div>Loading...</div>)}
             {scores?.map((score, i) => (
