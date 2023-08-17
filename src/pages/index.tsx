@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import { Game } from "@/components/Game";
 import { Leaderboard } from "@/components/Leaderboard";
@@ -6,11 +5,6 @@ import { Leaderboard } from "@/components/Leaderboard";
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Sound Wave Science</title>
-        <meta name="description" content="Sound Wave Science" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main className="flex flex-1 flex-col gap-4 p-4 lg:flex-row">
         <div className="flex flex-1 flex-col gap-4">
           {/* Banner */}
@@ -18,13 +12,13 @@ export default function Home() {
             <div className="h-[150px] w-[300px]">
               <Image src="/logo.png" alt="logo" width={300} height={150} />
             </div>
-            <h1 className="rounded-xl bg-white p-2 text-center font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-background">
+            <h1 className="rounded-xl bg-white p-2 text-center font-mono text-2xl text-background sm:text-3xl md:text-4xl lg:text-5xl">
               SOUND WAVE SCIENCE!
             </h1>
           </div>
           {/* Description */}
           <div className="lg:max-w-[90%]">
-            <h3 className="mb-2 mt-4 text-base md:text-lg lg:text-xl font-bold uppercase">
+            <h3 className="mb-2 mt-4 text-base font-bold uppercase md:text-lg lg:text-xl">
               Let&apos;s get loud!
             </h3>
             <p className="text-justify">
