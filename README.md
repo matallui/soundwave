@@ -1,7 +1,7 @@
 # Sound Wave Science
 
 <p align="center">
-  <img src="/screenshot.png" width="60%" />
+  <img src="/screenshot.png" width="70%" />
 </p>
 
 ## About
