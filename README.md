@@ -2,6 +2,10 @@
 
 Play with sound waves and try to make it to the leaderboard!!!
 
+<p align="center">
+  <img src="/screenshot.png" width="60%" />
+</p>
+
 ## About
 
 This is a volunteer project which aims at helping kids visualizing sound waves.
