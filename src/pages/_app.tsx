@@ -7,18 +7,25 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <div
-      className={cn(
-        "min-h-screen bg-background font-sans leading-5 antialiased",
-        fontSans.variable,
-        fontMono.variable
-      )}
-    >
-      <div className="min-w-screen relative flex min-h-screen w-screen flex-col text-sm sm:text-base">
-        <Component {...pageProps} />
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${fontSans.style.fontFamily};
+        }
+      `}</style>
+      <div
+        className={cn(
+          "min-h-screen bg-background font-sans leading-5 antialiased",
+          fontSans.variable,
+          fontMono.variable
+        )}
+      >
+        <div className="min-w-screen relative flex min-h-screen w-screen flex-col text-sm sm:text-base">
+          <Component {...pageProps} />
+        </div>
+        <TailwindIndicator />
       </div>
-      <TailwindIndicator />
-    </div>
+    </>
   );
 };
 
